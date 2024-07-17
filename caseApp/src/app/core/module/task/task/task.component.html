@@ -1,0 +1,70 @@
+<div class="container mt-5 w-50">
+  <button class="btn btn-success mb-2" (click)="addTaskDialog()">
+    + Add Task
+  </button>
+  @for (task of tasks; track $index) {
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading{{ $index }}">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          aria-expanded="true"
+          [attr.data-bs-target]="'#collapse' + $index"
+          [attr.aria-controls]="'collapse' + $index"
+        >
+          <span>{{ task.title }}</span>
+          <span
+            class="badge ms-2"
+            [ngClass]="{
+              'bg-danger': task.status === 'NEW',
+              'bg-info': task.status === 'IN_PROGRESS',
+              'bg-success': task.status === 'COMPLETED'
+            }"
+            >{{ task.status | uppercase }}</span
+          >
+        </button>
+      </h2>
+      <!-- <li *ngFor="let taskLabel of task.taskLabels">
+        {{ taskLabel.label.labelName }}
+      </li> -->
+      <div
+        id="collapse{{ $index }}"
+        class="accordion-collapse collapse show"
+        [attr.aria-labelledby]="'heading' + $index"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <!-- <div class="section d-flex flex-row-reverse bd-highlight">
+            <button class="btn btn-danger">Add Label +</button>
+          </div> -->
+          <div class="d-flex">
+            <span
+              style="cursor: pointer"
+              class="badge bg-primary me-1"
+              *ngFor="let taskLabel of task.taskLabels"
+              (click)="labelClick(taskLabel.label.id)"
+            >
+              {{ taskLabel.label.labelName }}</span
+            >
+            <!-- <button
+              (click)="editLabel(task.taskLabels)"
+              class="btn btn-danger btn-sm ms-auto bd-highlight"
+            > 
+              Add Label +
+            </button>
+          --></div>
+          {{ task.description }}
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>
+
+<!-- [ngClass]=" {
+    'badge bg-warning me-1' : task.status === 'New',
+    'badge bg-secondary me-1' : task.status === 'InProgress',
+    'badge bg-success me-1' : task.status === 'Completed'
+}" -->

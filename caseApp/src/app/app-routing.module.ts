@@ -20,9 +20,9 @@ const routes: Routes = [
           import('./core/module/label/label.module').then((m) => m.LabelModule),
       },
       {
-        path: 'tag',
+        path: 'task',
         loadChildren: () =>
-          import('./core/module/tag/tag.module').then((m) => m.TagModule),
+          import('./core/module/task/task.module').then((m) => m.TaskModule),
       },
     ],
   },

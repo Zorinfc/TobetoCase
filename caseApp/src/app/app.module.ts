@@ -8,9 +8,13 @@ import { LoginComponent } from './core/component/login/login.component';
 import { ErrorComponent } from './core/component/error/error.component';
 import { MenuComponent } from './core/component/menu/menu.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { urlInterceptor } from './core/interceptor/url.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogModule } from '@angular/cdk/dialog';
+import { SharedModule } from './components/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,16 @@ import { urlInterceptor } from './core/interceptor/url.interceptor';
     ErrorComponent,
     MenuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    MatDialogModule,
+    DialogModule,
+  ],
   providers: [
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([urlInterceptor])),

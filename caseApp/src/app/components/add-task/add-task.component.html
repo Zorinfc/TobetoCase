@@ -1,0 +1,38 @@
+<div class="dialog">
+  <div class="mx-4 my-4">
+    <form [formGroup]="taskForm">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title : </label>
+        <input
+          class="mt-2 form-control"
+          type="text"
+          name="title"
+          formControlName="title"
+          id="title"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description : </label>
+        <input
+          class="mt-2 form-control"
+          type="text"
+          name="description"
+          formControlName="description"
+          id="description"
+          required
+        />
+      </div>
+      <div class="d-grid">
+        <button
+          class="btn btn-success mt-4"
+          (click)="addTask()"
+          [disabled]="taskForm.invalid"
+        >
+          Add Task
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

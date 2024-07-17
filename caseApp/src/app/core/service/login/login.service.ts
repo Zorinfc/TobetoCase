@@ -59,7 +59,6 @@ export class LoginService {
     let payload = this.parseJwt(token!);
     let tarih = payload.exp;
     let now = Date.now() / 1000;
-    //console.log(parseInt(tarih!));
     if (parseInt(tarih!) > now) {
       return true;
     } else return false;

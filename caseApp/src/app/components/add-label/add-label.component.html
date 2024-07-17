@@ -1,0 +1,19 @@
+<div class="dialog">
+  <div class="mx-4 my-4">
+    <div class="mb-3">
+      <label class="form-label" for="count">Label Name : :</label>
+      <input
+        id="count"
+        class="mt-2 form-control"
+        type="text"
+        placeholder="label name"
+        [(ngModel)]="name"
+        aria-describedby="inputHelp"
+      />
+    </div>
+
+    <div class="d-grid">
+      <button class="btn btn-success" (click)="addLabel()">Add Label</button>
+    </div>
+  </div>
+</div>

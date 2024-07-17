@@ -2,3 +2,16 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.new-task {
+    background-color: #20af28;
+  }
+  
+  .inprogress-task {
+    background-color: #ffd966;
+  }
+  
+  .completed-task {
+    background-color: #b6e6bd;
+  }

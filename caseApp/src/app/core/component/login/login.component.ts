@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { LoginService } from '../../service/login.service';
+import { LoginService } from '../../service/login/login.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent {
   constructor(
     private builder: FormBuilder,
     private service: LoginService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
   loginForm = this.builder.nonNullable.group({
     userName: 'a',
@@ -25,11 +27,11 @@ export class LoginComponent {
 
     this.service.login(username, password).subscribe({
       next: (data) => {
-        console.log('giris basarili');
         this.router.navigate(['menu']);
+        this.toastr.success('Username & Password Correct');
       },
       error: (err) => {
-        console.log('hata');
+        this.toastr.error('Username or Password Incorrect');
       },
     });
   }
